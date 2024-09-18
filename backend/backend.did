@@ -1,0 +1,14 @@
+type Car = 
+ record {
+   id: nat;
+   isTrophy: bool;
+   make: text;
+   model: text;
+   price: float64;
+   year: nat;
+ };
+service : {
+  addCar: (text, text, nat, float64, bool) -> ();
+  getAllCars: () -> (vec Car) query;
+  getTrophyCars: () -> (vec Car) query;
+}

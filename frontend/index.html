@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classic Car Dealership</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>
+        <h1>Classic Car Dealership</h1>
+    </header>
+    <main>
+        <section id="trophy-cars">
+            <h2>Trophy Cars</h2>
+            <div id="trophy-cars-container"></div>
+        </section>
+        <section id="cars-for-sale">
+            <h2>Cars for Sale</h2>
+            <div id="cars-for-sale-container"></div>
+        </section>
+        <section id="add-car">
+            <h2>Add a New Car</h2>
+            <form id="add-car-form">
+                <input type="text" id="make" placeholder="Make" required>
+                <input type="text" id="model" placeholder="Model" required>
+                <input type="number" id="year" placeholder="Year" required>
+                <input type="number" id="price" placeholder="Price" step="0.01" required>
+                <label>
+                    <input type="checkbox" id="isTrophy"> Trophy Car
+                </label>
+                <button type="submit">Add Car</button>
+            </form>
+        </section>
+    </main>
+    <script type="module" src="index.js"></script>
+</body>
+</html>
