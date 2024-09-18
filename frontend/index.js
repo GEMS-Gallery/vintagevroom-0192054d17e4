@@ -20,27 +20,38 @@ async function displayAllCars() {
 
 function createCarCard(car) {
     const card = document.createElement('div');
-    card.className = 'car-card';
+    card.className = 'col-md-4 mb-4';
     card.innerHTML = `
-        <h3>${car.make} ${car.model}</h3>
-        <p>Year: ${car.year}</p>
-        <p>Price: $${car.price.toFixed(2)}</p>
+        <div class="card car-card">
+            <div class="card-body">
+                <h5 class="card-title">${car.make} ${car.model}</h5>
+                <p class="card-text">
+                    Year: ${car.year}<br>
+                    Price: $${car.price.toFixed(2)}
+                </p>
+                <a href="#" class="btn btn-primary">View Details</a>
+            </div>
+        </div>
     `;
     return card;
 }
 
 async function addCar(event) {
     event.preventDefault();
-    const make = document.getElementById('make').value;
-    const model = document.getElementById('model').value;
-    const year = parseInt(document.getElementById('year').value);
-    const price = parseFloat(document.getElementById('price').value);
-    const isTrophy = document.getElementById('isTrophy').checked;
+    const form = event.target;
+    if (form.checkValidity()) {
+        const make = document.getElementById('make').value;
+        const model = document.getElementById('model').value;
+        const year = parseInt(document.getElementById('year').value);
+        const price = parseFloat(document.getElementById('price').value);
+        const isTrophy = document.getElementById('isTrophy').checked;
 
-    await backend.addCar(make, model, year, price, isTrophy);
-    await displayTrophyCars();
-    await displayAllCars();
-    event.target.reset();
+        await backend.addCar(make, model, year, price, isTrophy);
+        await displayTrophyCars();
+        await displayAllCars();
+        form.reset();
+    }
+    form.classList.add('was-validated');
 }
 
 document.getElementById('add-car-form').addEventListener('submit', addCar);
